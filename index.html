@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HabitPulse — Daily Goal & Streak Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div>
+        <h1>HabitPulse</h1>
+        <p class="subtitle">Track your daily goals and build lasting weekly streaks</p>
+      </div>
+      <div class="header-actions">
+        <span id="current-date-display" class="date-badge"></span>
+        <button id="reset-demo-btn" class="btn btn-outline">Reset Demo Data</button>
+      </div>
+    </header>
+
+    <!-- KPI Summary Row -->
+    <section class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-label">Today's Progress</span>
+        <div class="stat-value" id="stat-today">0 / 0</div>
+        <span class="stat-sub" id="stat-today-pct">0% completed today</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Best Active Streak</span>
+        <div class="stat-value streak-highlight" id="stat-best-streak">0 days 🔥</div>
+        <span class="stat-sub" id="stat-best-habit">Keep logging daily!</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Weekly Completion Rate</span>
+        <div class="stat-value" id="stat-weekly-rate">0%</div>
+        <span class="stat-sub">Across all active habits</span>
+      </div>
+    </section>
+
+    <!-- Main Content Grid -->
+    <div class="main-grid">
+      <!-- Left Column: Daily Habit Check-in Matrix -->
+      <section class="card habits-section">
+        <div class="card-header">
+          <h2>Weekly Habit Log</h2>
+          <form id="add-habit-form" class="add-habit-form">
+            <input 
+              type="text" 
+              id="habit-name-input" 
+              placeholder="New habit (e.g., Read 20 mins)..." 
+              required 
+              maxlength="40"
+            />
+            <select id="habit-category-input" aria-label="Habit Category">
+              <option value="#6366f1">Mindfulness</option>
+              <option value="#10b981">Health & Fitness</option>
+              <option value="#f59e0b">Learning</option>
+              <option value="#ec4899">Productivity</option>
+            </select>
+            <button type="submit" class="btn btn-primary">+ Add Goal</button>
+          </form>
+        </div>
+
+        <div class="table-responsive">
+          <table class="habit-table">
+            <thead>
+              <tr id="habit-table-header">
+                <th>Habit</th>
+                <!-- 7-day headers injected dynamically -->
+                <th>Streak</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="habit-table-body">
+              <!-- Habit rows injected dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Right Column: Weekly Streak & Completion Bar Chart -->
+      <section class="card chart-section">
+        <div class="card-header">
+          <h2>Weekly Streak Chart</h2>
+          <span class="chart-subtitle">Daily completion percentage (Last 7 Days)</span>
+        </div>
+        <div id="weekly-chart-container" class="chart-container">
+          <!-- Bars injected dynamically by js/chart.js -->
+        </div>
+        <div class="streak-leaderboard">
+          <h3>Habit Streak Breakdown</h3>
+          <div id="habit-streak-bars" class="habit-streak-list">
+            <!-- Horizontal streak bars injected by js/chart.js -->
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Modular ES6 Scripts -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
